@@ -1,6 +1,6 @@
 """Services module."""
 
-from aioredis import Redis
+from redis.asyncio import Redis
 
 
 class Service:
@@ -9,4 +9,4 @@ class Service:
 
     async def process(self) -> str:
         await self._redis.set("my-key", "value")
-        return await self._redis.get("my-key", encoding="utf-8")
+        return await self._redis.get("my-key")
